@@ -33,7 +33,8 @@ Consider a canonical superclass.
 
     class Vehicle
       class Route; end    
-      def drive(passengers, destination)
+      def take(passengers, destination)
+        @passengers = []
         load passengers
         follow Route.new(@current_location, destination)
         unload passengers
@@ -66,7 +67,7 @@ Let's suppose we've been handed this interface from another developer. How do we
       def unload(passengers); @current_location << passengers; @passengers = []; end
     end
    
-So now when we try to invoke Zeppelin.move, we'll get an exception warning us that Zeppelin is obligated to implement a method 'follow' from the interface Vehicle. This is the 'hint' that the implementing developer has a bit more work to do before they can use this custom class smoothly with the rest of the system. 
+So now when we try to invoke Zeppelin.take, we'll get an exception warning us that Zeppelin is obligated to implement a method 'follow' from the interface Vehicle. This is the 'hint' that the implementing developer has a bit more work to do before they can use this custom class smoothly with the rest of the system. 
 
 ## Contributing
 
