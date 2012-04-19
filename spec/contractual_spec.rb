@@ -16,9 +16,9 @@ describe Contractual::Interface, "an interface should support a contract" do
   it "should warn about unimplemented methods" do
     mock_object = MockInterfaceImpl.new
   
-    lambda { mock_object.mock_operation }.should raise_error(Contractual::Interface::MethodNotImplementedError, "MockInterfaceImpl needs to implement 'mock_operation' for interface MockInterface!")
+    lambda { mock_object.mock_operation }.should raise_error(Contractual::Interface::MethodNotImplementedError, "MockInterfaceImpl is obligated to implement 'mock_operation' for interface MockInterface!")
 
-    lambda { mock_object.perform_another_mock_operation }.should raise_error(Contractual::Interface::MethodNotImplementedError, "MockInterfaceImpl needs to implement 'perform_another_mock_operation' for interface MockInterface!")
+    lambda { mock_object.perform_another_mock_operation }.should raise_error(Contractual::Interface::MethodNotImplementedError, "MockInterfaceImpl is obligated to implement 'perform_another_mock_operation' for interface MockInterface!")
   
   end
 end

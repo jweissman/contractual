@@ -20,7 +20,7 @@ module Contractual
         klass_name = klass.class.name
         interface_name = self.name
 
-        raise MethodNotImplementedError.new("#{klass.class.name} needs to implement '#{method_name}' for interface #{self.name}!")
+        raise MethodNotImplementedError.new("#{klass.class.name} is obligated to implement '#{method_name}' for interface #{self.name}!")
       end
     end
 
