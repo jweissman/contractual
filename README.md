@@ -32,6 +32,7 @@ Or install it yourself as:
 Consider a canonical superclass.
 
     class Vehicle
+      class Route; end    
       def drive(passengers, destination)
         load passengers
         follow Route.new(@current_location, destination)
@@ -43,12 +44,15 @@ Note all the methods have to be implemented for this to work (load, follow, unlo
 
     class Vehicle
       include Contractual::Interface
-    
+
       must :load, :passengers
       must :follow, :route
       must :unload, :passengers
-    
-      def move(passengers, destination)
+  
+      class Route; end
+
+      def take(passengers, destination)
+        @passengers = []
         load passengers
         follow Route.new(@current_location, destination)
         unload passengers
@@ -57,7 +61,7 @@ Note all the methods have to be implemented for this to work (load, follow, unlo
 
 Let's suppose we've been handed this interface from another developer. How do we make a custom subclass? Our first attempt at implementing might look something like this:
 
-    class Zeppelin
+    class Zeppelin < Vehicle
       def load(passengers); @passengers << passengers; end
       def unload(passengers); @current_location << passengers; @passengers = []; end
     end
