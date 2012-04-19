@@ -1,8 +1,5 @@
 require 'contractual'
 
-
-
-
 describe Contractual::Interface, "an interface should support a contract" do
   
   class MockInterface

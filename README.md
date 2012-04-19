@@ -39,13 +39,14 @@ Consider a canonical superclass.
       end
     end
   
-See all the methods have to be implemented for this to work? Let's specify these as part of the interface:
+Note all the methods have to be implemented for this to work (load, follow, unload). Let's go ahead and specify these as part of the interface:
 
     class Vehicle
+      include Contractual::Interface
     
-      must_implement :load, :passengers
-      must_implement :follow, :route
-      must_implement :unload, :passengers
+      must :load, :passengers
+      must :follow, :route
+      must :unload, :passengers
     
       def move(passengers, destination)
         load passengers
@@ -57,11 +58,9 @@ See all the methods have to be implemented for this to work? Let's specify these
 Let's suppose we've been handed this interface from another developer. How do we make a custom subclass? Our first attempt at implementing might look something like this:
 
     class Zeppelin
-    
       def load(passengers); @passengers << passengers; end
       def unload(passengers); @current_location << passengers; @passengers = []; end
-    
-     end
+    end
    
 So now when we try to invoke Zeppelin.move, we'll get an exception warning us that Zeppelin is obligated to implement a method 'follow' from the interface Vehicle. This is the 'hint' that the implementing developer has a bit more work to do before they can use this custom class smoothly with the rest of the system. 
 
