@@ -1,7 +1,7 @@
 # Contractual
 
 This gem provides limited support for the utilization of interfaces in Ruby. The approach here is 
-nearly idetnical to one suggested by Mark Bates at http://metabates.com/2011/02/07/building-interfaces-and-abstract-classes-in-ruby/.
+nearly identical to one suggested by Mark Bates at http://metabates.com/2011/02/07/building-interfaces-and-abstract-classes-in-ruby/.
 It didn't seem like this had been turned into a gem yet, so I thought I might go ahead and put it together in
 case others found the technique as helpful as I had. 
 
